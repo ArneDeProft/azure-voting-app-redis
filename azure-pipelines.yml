@@ -47,8 +47,6 @@ stages:
   - deployment: Deploy
     displayName: Deploy
     environment: 'DemoVotingApp.mydemo'
-    variables:
-    - group: Default
     strategy:
       runOnce:
         deploy:
@@ -61,8 +59,7 @@ stages:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              kubernetesServiceConnection: 'Kubernetes Cluster Connection'
-              namespace: 'mydemo'
+
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
@@ -74,5 +71,5 @@ stages:
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
-                $(RegistryName)/$(redisRepo):$(tag)
-                $(RegistryName)/$(frontRepo):$(tag)
+                acrdemoakscicd.azurecr.io/$(redisRepo):$(tag)
+                acrdemoakscicd.azurecr.io/$(frontRepo):$(tag)
