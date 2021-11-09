@@ -48,7 +48,7 @@ stages:
       vmImage: $(vmImage)
     environment: 'DemoVotingApp.mydemo'
     variables:
-    - group: Release
+    - group: Default
     strategy:
       runOnce:
         deploy:
