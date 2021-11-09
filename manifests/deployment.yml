@@ -2,6 +2,7 @@
   kind: Deployment
   metadata:
     name: azure-vote-back
+    namespace: mydemo
   spec:
     replicas: 1
     selector:
@@ -14,6 +15,7 @@
       spec:
         containers:
           - name: azure-vote-back
+            namespace: mydemo
             image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
             env:
               - name: ALLOW_EMPTY_PASSWORD
@@ -25,6 +27,7 @@
   kind: Deployment
   metadata:
     name: arnedeproftazurevotingappredisadoautomated 
+    namespace: mydemo
   spec:
     replicas: 1
     selector:
@@ -37,6 +40,7 @@
       spec:
         containers:
           - name: arnedeproftazurevotingappredisadoautomated 
+            namespace: mydemo
             image: acrdemoakscicd.azurecr.io/arnedeproftazurevotingappredisadoautomated
             ports:
             - containerPort: 80
