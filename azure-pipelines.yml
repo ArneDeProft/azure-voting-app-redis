@@ -35,8 +35,6 @@ stages:
         tags: |
           $(tag)
       
-    - upload: manifests
-      artifact: manifests
 
 - stage: 'Deploy'
   displayName: 'Deploy the containers'
@@ -51,8 +49,6 @@ stages:
       runOnce:
         deploy:
           steps:
-          - download: current
-            artifact: manifests
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
@@ -68,8 +64,7 @@ stages:
               kubernetesServiceConnection: 'Kubernetes Cluster Connection'
               namespace: 'mydemo'
               manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
+                $(Pipeline.Workspace)/azure-vote-all-in-one-redis.yaml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
