@@ -57,7 +57,7 @@ stages:
           - task: Kubernetes@1
             displayName: kubectl apply for secretType dockerRegistry
             inputs:
-              azureSubscriptionEndpoint: '0a586459-81e3-4265-a119-9d1a44fd724d'
+              azureSubscriptionEndpoint: 'f51c5bbf-1cc0-4ed6-9b44-0e942b1bf3f0'
               azureResourceGroup: 'rg-demo-AdoToAKS-votingapp'
               namespace: 'mydemo'
               kubernetesCluster: 'AdoToAKS-demo-cluster'
