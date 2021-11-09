@@ -65,6 +65,6 @@ stages:
               arguments: '-f $(Pipeline.Workspace)/manifests/azure-vote-all-in-one-redis.yaml'
               secretType: dockerRegistry
               containerRegistryType: Azure Container Registry
-              azureSubscriptionEndpointForSecrets: 'c772227c-c8d1-4d69-800e-f780d74bd2c2'
+              azureSubscriptionEndpointForSecrets: 'f244d55e-04b1-4a5d-a002-90fd19931a91'
               azureContainerRegistry: acrdemoakscicd.azurecr.io
               forceUpdate: true
