@@ -31,7 +31,7 @@ stages:
         buildContext: $(Build.Repository.LocalPath)
         repository: $(frontRepo)
         dockerfile: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
-        containerRegistry: 'Container Registry Connection'
+        containerRegistry: 'Container Registry Connection2'
         tags: |
           $(tag)
     - publish: '$(Build.SourcesDirectory)/manifests'
@@ -58,7 +58,7 @@ stages:
             inputs:
               action: createSecret
               secretName: $(imagePullSecret)
-              dockerRegistryEndpoint: 'Container Registry Connection'
+              dockerRegistryEndpoint: 'Container Registry Connection2'
               kubernetesServiceConnection: 'Kubernetes Cluster Connection'
               namespace: 'mydemo'
           - task: KubernetesManifest@0
