@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 variables:
-  buildConfiguration: 'Release'
+  buildConfiguration: 'Default'
   redisRepo: 'redis'
   frontRepo: 'azure-vote-front'
   tag: '$(Build.BuildId)'
