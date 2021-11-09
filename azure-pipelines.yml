@@ -10,6 +10,8 @@ variables:
   tag: '$(Build.BuildId)'
   imagePullSecret: 'secret'
   vmImage: 'ubuntu-latest'
+  dockerRegistryServiceConnection: 'f9e505be-244e-4b73-8410-404aa83e4cb5'
+
 
 trigger:
 - main
@@ -58,7 +60,7 @@ stages:
             inputs:
               action: createSecret
               secretName: $(imagePullSecret)
-              dockerRegistryEndpoint: 'Container Registry Connection2'
+              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
               kubernetesServiceConnection: 'Kubernetes Cluster Connection'
               namespace: 'mydemo'
           - task: KubernetesManifest@0
