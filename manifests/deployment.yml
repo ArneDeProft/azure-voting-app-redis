@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: arnedeproftazurevotingappredisadoautomated 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arnedeproftazurevotingappredisadoautomated
+  template:
+    metadata:
+      labels:
+        app: arnedeproftazurevotingappredisadoautomated 
+    spec:
+      containers:
+        - name: arnedeproftazurevotingappredisadoautomated 
+          image: acrdemoakscicd.azurecr.io/arnedeproftazurevotingappredisadoautomated
+          ports:
+          - containerPort: 80
