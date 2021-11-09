@@ -34,6 +34,8 @@ stages:
         containerRegistry: 'Container Registry Connection'
         tags: |
           $(tag)
+    - publish: '$(Build.SourcesDirectory)/manifests'
+      artifact: manifests
       
 
 - stage: 'Deploy'
@@ -49,6 +51,8 @@ stages:
       runOnce:
         deploy:
           steps:
+          - download: current
+            artifact: manifests
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
@@ -64,7 +68,7 @@ stages:
               kubernetesServiceConnection: 'Kubernetes Cluster Connection'
               namespace: 'mydemo'
               manifests: |
-                $(Pipeline.Workspace)/azure-vote-all-in-one-redis.yaml
+                $(Pipeline.Workspace)/manifests/azure-vote-all-in-one-redis.yaml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
