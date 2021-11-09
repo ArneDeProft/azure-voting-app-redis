@@ -14,6 +14,8 @@ variables:
 trigger:
 - main
 
+pool:
+  vmImage: $(vmImage)
 
 stages:
 - stage: Build
@@ -21,8 +23,7 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      vmImage: $(vmImage)
+
     steps:
     - task: Docker@2
       inputs:
@@ -43,8 +44,6 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy
-    pool:
-      vmImage: $(vmImage)
     environment: 'DemoVotingApp.mydemo'
     variables:
     - group: Default
