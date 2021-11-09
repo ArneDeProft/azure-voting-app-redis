@@ -59,6 +59,7 @@ stages:
             inputs:
               azureSubscriptionEndpoint: 'f51c5bbf-1cc0-4ed6-9b44-0e942b1bf3f0'
               azureResourceGroup: 'rg-demo-AdoToAKS-votingapp'
+              namespace: 'mydemo'
               kubernetesCluster: 'AdoToAKS-demo-cluster'
               arguments: '-f $(Pipeline.Workspace)/manifests/azure-vote-all-in-one-redis.yaml'
               command: 'apply'
