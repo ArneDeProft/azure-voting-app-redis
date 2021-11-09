@@ -18,7 +18,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-back
-        image: acrdemoakscicd.azurecr.io/redis
+        image: myacradp.azurecr.io/redis
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "yes"
@@ -61,7 +61,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-front
-        image: acrdemoakscicd.azurecr.io/azure-vote-front
+        image: myacradp.azurecr.io/azure-vote-front
         ports:
         - containerPort: 80
         resources:
