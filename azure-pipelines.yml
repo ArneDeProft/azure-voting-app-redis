@@ -9,12 +9,11 @@ variables:
   frontRepo: 'azure-vote-front'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'secret'
+  vmImage: 'ubuntu-latest'
 
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
 
 stages:
 - stage: Build
