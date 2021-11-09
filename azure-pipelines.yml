@@ -55,11 +55,16 @@ stages:
             artifact: manifests
 
           - task: Kubernetes@1
-            displayName: 'kubectl apply'
+            displayName: kubectl apply for secretType dockerRegistry
             inputs:
               azureSubscriptionEndpoint: '0a586459-81e3-4265-a119-9d1a44fd724d'
               azureResourceGroup: 'rg-demo-AdoToAKS-votingapp'
               namespace: 'mydemo'
               kubernetesCluster: 'AdoToAKS-demo-cluster'
+              command: apply
               arguments: '-f $(Pipeline.Workspace)/manifests/azure-vote-all-in-one-redis.yaml'
-              command: 'apply'
+              secretType: dockerRegistry
+              containerRegistryType: Azure Container Registry
+              azureSubscriptionEndpointForSecrets: 'c772227c-c8d1-4d69-800e-f780d74bd2c2'
+              azureContainerRegistry: acrdemoakscicd.azurecr.io
+              forceUpdate: true
