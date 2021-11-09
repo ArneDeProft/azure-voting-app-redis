@@ -72,5 +72,5 @@ stages:
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
-                http://$(RegistryName)/$(redisRepo):$(tag)
-                http://$(RegistryName)/$(frontRepo):$(tag)
+                https://$(RegistryName)/$(redisRepo):$(tag)
+                https://$(RegistryName)/$(frontRepo):$(tag)
