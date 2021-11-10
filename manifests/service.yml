@@ -8,6 +8,7 @@ spec:
     - port: 80 
     selector:
         app: azure-vote-front
+---
 apiVersion: v1
 kind: Service
 metadata:
