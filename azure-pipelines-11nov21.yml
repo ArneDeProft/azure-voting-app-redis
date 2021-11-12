@@ -27,7 +27,7 @@ stages:
       displayName: 'Publish OWASP Dependency Check security scan results'
       inputs:
         testResultsFormat: 'JUnit'
-        testResultsFiles: 'dependency-check/*junit.xml'
+        testResultsFiles: 'CodeAnalysisLogs/*junit.xml'
         searchFolder: '$(Common.TestResultsDirectory)'
         testRunTitle: 'Dependency Check'
         buildConfiguration: '$(BuildConfiguration)'
