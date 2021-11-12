@@ -24,6 +24,11 @@ stages:
         failOnCVSS: '8'
         warnOnCVSSViolation: true
 
+    - task: Gitleaks@1
+      inputs:
+        scanfolder: '$(Build.SourcesDirectory)'
+        reportformat: 'sarif'
+
     - task: PublishTestResults@2
       displayName: 'Publish OWASP Dependency Check security scan results'
       inputs:
