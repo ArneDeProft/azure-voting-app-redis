@@ -20,16 +20,17 @@ stages:
       inputs:
         projectName: 'azure-voting-app-redis'
         scanPath: '$(Build.SourcesDirectory)'
-        format: 'JUNIT'
+        format: 'ALL'
         failOnCVSS: '8'
         warnOnCVSSViolation: true
+
     - task: PublishTestResults@2
       displayName: 'Publish OWASP Dependency Check security scan results'
       inputs:
         testResultsFormat: 'JUnit'
-        testResultsFiles: 'CodeAnalysisLogs/*junit.xml'
+        testResultsFiles: 'Dependency Check/*junit.xml'
         searchFolder: '$(Common.TestResultsDirectory)'
-        testRunTitle: 'Dependency Check'
+        testRunTitle: 'CodeAnalysisLogs'
         buildConfiguration: '$(BuildConfiguration)'
 
     - task: Docker@2
