@@ -33,16 +33,10 @@ stages:
     
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Common.TestResultsDirectory)'
+        PathtoPublish: '$(Common.TestResultsDirectory)/dependency-check/*.sarif'
         ArtifactName: 'CodeAnalysisLogs'
         publishLocation: 'Container'
 
-    - task: PublishTestResults@2
-      displayName: 'Publish OWASP Dependency Check security scan results'
-      inputs:
-        testResultsFormat: 'JUnit'
-        testResultsFiles: '**/*sarif.xml'
-        searchFolder: '$(Common.TestResultsDirectory)'
 
 
     - task: Docker@2
