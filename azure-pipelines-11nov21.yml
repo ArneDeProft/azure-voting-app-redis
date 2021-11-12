@@ -28,10 +28,8 @@ stages:
       displayName: 'Publish OWASP Dependency Check security scan results'
       inputs:
         testResultsFormat: 'JUnit'
-        testResultsFiles: 'Dependency Check/*junit.xml'
+        testResultsFiles: '**/*junit.xml'
         searchFolder: '$(Common.TestResultsDirectory)'
-        testRunTitle: 'CodeAnalysisLogs'
-        buildConfiguration: '$(BuildConfiguration)'
 
     - task: Docker@2
       displayName: 'Build and push the front img to container registry'
