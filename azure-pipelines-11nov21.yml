@@ -33,7 +33,7 @@ stages:
     
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Common.TestResultsDirectory)/dependency-check/*.sarif'
+        PathtoPublish: '$(Common.TestResultsDirectory)/dependency-check'
         ArtifactName: 'CodeAnalysisLogs'
         publishLocation: 'Container'
 
