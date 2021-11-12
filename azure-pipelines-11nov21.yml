@@ -16,6 +16,16 @@ stages:
     pool:
       vmImage: 'ubuntu-20.04'
     steps:
+    - task: dependency-check-build-task@5
+      displayName: 'OWASP Dependency Check scan of third-party dependencies' # This task will perform security scan of third-party dependencies
+      inputs:
+        projectName: 'test'
+        scanPath: '$(Build.SourcesDirectory)'
+        failOnCVSS: 8 # Fail the build if vulnerabilities with CVSS score higher than 8 are discovered
+        format: 'HTML, JUNIT' # Format of scan result report
+        enableExperimental: true # Enable experimental file type analyzers
+        dependencyCheckVersion: '6.1.6'
+
     - task: Docker@2
       displayName: 'Build and push the front img to container registry'
       inputs:
