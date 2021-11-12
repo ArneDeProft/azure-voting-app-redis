@@ -30,6 +30,20 @@ stages:
         testResultsFormat: 'JUnit'
         testResultsFiles: '**/*junit.xml'
         searchFolder: '$(Common.TestResultsDirectory)'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Common.TestResultsDirectory)'
+        ArtifactName: 'CodeAnalysisLogs'
+        publishLocation: 'Container'
+
+    - task: PublishTestResults@2
+      displayName: 'Publish OWASP Dependency Check security scan results'
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '**/*sarif.xml'
+        searchFolder: '$(Common.TestResultsDirectory)'
+
 
     - task: Docker@2
       displayName: 'Build and push the front img to container registry'
